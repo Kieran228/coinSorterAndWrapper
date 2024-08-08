@@ -1,3 +1,4 @@
+/*
 //* Declared variables to store how many coins each type of coin is holding (300)
 let totalPennyAmount = 300;
 let totalNickelAmount = 300;
@@ -37,3 +38,28 @@ const formatter = new Intl.NumberFormat('en-US', {
 });
 
 console.log("Total amount of coins in dollars: " + " " + formatter.format(total))
+*/
+
+let coinType = ["Pennies", "Nickels", "Dimes", "Quarters"];
+let coinValue = [.01, .05, .10, .25];
+let coinAmount = [300, 300, 300, 300];
+let wrapperPerCoin = [50, 40, 50, 40];
+
+let allCoinValue = 0;
+
+const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+});
+
+for (i = 0; i < coinAmount.length; i++) {
+    let totalValue = coinValue[i] * coinAmount[i];
+    let wrappersNeeded = coinAmount[i] / wrapperPerCoin[i];
+
+    allCoinValue += coinValue[i] * coinAmount[i];
+
+    let leftovers = coinAmount[i] % wrapperPerCoin[i];
+    console.log("Wrappers Needed: " + wrappersNeeded);
+};
+
+console.log(formatter.format(allCoinValue));
